@@ -1,6 +1,7 @@
 package br.com.codeDesignPrinciples.module4.entity;
 
 public class Movie {
+    private Long id;
     private String name;
     private Integer year;
     private String genre;
@@ -9,12 +10,21 @@ public class Movie {
 
     public Movie(){}
 
-    public Movie(String name, Integer year, String genre, String director, Float rate) {
+    public Movie(Long id,String name, Integer year, String genre, String director, Float rate) {
+        this.id = id;
         this.name = name;
         this.year = year;
         this.genre = genre;
         this.director = director;
         this.rate = rate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,7 +60,10 @@ public class Movie {
     }
 
     public Float getRate() {
+        if(rate <=5.0){
         return rate;
+        }
+        else return null;
     }
 
     public void setRate(Float rate) {
@@ -60,7 +73,8 @@ public class Movie {
     @Override
     public String toString() {
         return "Movie{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", year=" + year +
                 ", genre='" + genre + '\'' +
                 ", director='" + director + '\'' +
