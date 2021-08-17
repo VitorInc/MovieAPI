@@ -1,5 +1,7 @@
 package br.com.codeDesignPrinciples.module4.entity;
 
+import java.util.Objects;
+
 public class Movie {
     private Long id;
     private String name;
@@ -68,6 +70,19 @@ public class Movie {
 
     public void setRate(Float rate) {
         this.rate = rate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(getName(), movie.getName()) && Objects.equals(getGenre(), movie.getGenre()) && Objects.equals(getDirector(), movie.getDirector()) && Objects.equals(getRate(), movie.getRate());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getDirector());
     }
 
     @Override
